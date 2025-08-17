@@ -78,7 +78,9 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 ## Intel macOS Docker Setup
 Talk to Ethan.
 
-## Done!
+## Done! (Mostly)
+
+Additionally, install the Python extension in your Docker/VM's VS Code to get syntax highlighting/autocomplete.
 
 And that's it for environment setup! You're ready to start the onboarding project.
 
