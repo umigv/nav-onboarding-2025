@@ -26,6 +26,7 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 
 1. Download UTM @ https://mac.getutm.app/
 
+### TODO: upload image without script, use command to download script. also figure out persisting our requirements in linux and windows docker
 2. Visit https://drive.google.com/drive/u/1/folders/1CuCsx1mUXYT3qFiAWCIg0p1zBhwae-vI
 
 **Important**: Do **not** select everything and click download. The files/folders must be downloaded individually, otherwise it will be *very* slow.
@@ -55,6 +56,29 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 5. Run `~/install_script.sh` and follow the prompts.
     
     Your `sudo` password is the same as your user password.
+
+## Windows Docker Setup
+1. Install Docker Desktop from https://www.docker.com/products/docker-desktop, uncheck "Use Windows containers," and enable WSL2 during setup. 
+2. Make sure Docker desktop is running. Then open PowerShell and run `docker pull ghcr.io/tiryoh/ros2-desktop-vnc:humble` to pull the Docker image.`
+3. Create a workspace folder by running `mkdir C:\Users\YOURWINDOWSUSERNAMEHERE\arv-ws`
+4. Start the container using `docker run -it -p 8080:80 --shm-size=512m --security-opt seccomp=unconfined -v C:\Users\YOURWINDOWSUSERNAMEHERE\arv-ws:/home/ubuntu/arv-ws --name my_ros2_env ghcr.io/tiryoh/ros2-desktop-vnc:humble`
+5. Note: you can change `512m` to `1g` for better Gazebo and Rviz performance
+6. Open http://127.0.0.1:8080 in your browser to access the ROS 2 GUI.
+7. Next time, run `docker start -ai my_ros2_env` to directly start your Docker container.
+
+## Linux Docker Setup
+1. Install Docker from https://docs.docker.com/engine/install/
+2. Restart your computer to ensure Docker is running. Then open a terminal and run `sudo docker pull ghcr.io/tiryoh/ros2-desktop-vnc:humble` to pull the Docker image.`
+3. Create a workspace folder by running `mkdir ~/arv-ws`
+4. Start the container using `docker run -it -p 8080:80 --shm-size=512m --security-opt seccomp=unconfined -v /home/YOURUSERNAMEHERE/arv-ws:/home/ubuntu/arv-ws --name my_ros2_env ghcr.io/tiryoh/ros2-desktop-vnc:humble`
+5. Note: you can change `512m` to `1g` for better Gazebo and Rviz performance
+6. Open http://127.0.0.1:8080 in your browser to access the ROS 2 GUI.
+7. Next time, run `sudo docker start -ai my_ros2_env` to directly start your Docker container.
+
+## Intel macOS Docker Setup
+Talk to Ethan.
+
+## Done!
 
 And that's it for environment setup! You're ready to start the onboarding project.
 
