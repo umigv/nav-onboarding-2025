@@ -104,8 +104,9 @@ In ROS terms:
 - Call the deliver_pizza service
 
 ## Initial Setup
-To begin, open a terminal window from the sidebar on the left, navigate to the workspace src directory, and clone this repo:
+To begin, open a terminal window from the sidebar on the left, make a workspace directory, enter it, and clone this repo:
 ``` bash
+mkdir -p ~/arv-ws/src
 cd ~/arv-ws/src
 git clone https://github.com/umigv/nav-onboarding-2025
 ```
@@ -321,6 +322,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
