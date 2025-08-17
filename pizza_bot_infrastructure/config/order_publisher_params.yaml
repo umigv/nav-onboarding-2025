@@ -1,0 +1,4 @@
+order_publisher_node:
+  ros__parameters:
+    repeat_orders: false
+    order_delay_seconds: 20
