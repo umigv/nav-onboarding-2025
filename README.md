@@ -1,7 +1,7 @@
 # Navigation Onboarding 2025
 Welcome to the navigation sub-team! This onboarding project will help get you familiar with the Robot Operating System (ROS), an open-source collection of software libraries and tools used extensively in robotics application development. 
 
-## ROS Overview
+# ROS Overview
 Useful links:\
 [ROS Website](https://www.ros.org/)\
 [ROS Docs](https://docs.ros.org/en/humble/)\
@@ -17,12 +17,48 @@ ROS provides both a Python API (rclpy) and a C++ API (rclcpp), but a node's impl
 
 ROS is designed for the Ubuntu Operating System, a Linux distribution, so some environment setup is required before diving into programming with ROS. 
 
-## Environment Setup
-# TODO
+# Environment Setup
+We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Silicon) uses a VM, and other devices use Docker. Follow the directions for your system.
+
+## macOS (Apple Silicon) VM Setup
+
+### Downloading VM
+
+1. Download UTM @ https://mac.getutm.app/
+
+2. Visit https://drive.google.com/drive/u/1/folders/1CuCsx1mUXYT3qFiAWCIg0p1zBhwae-vI
+
+**Important**: Do **not** select everything and click download. The files/folders must be downloaded individually, otherwise it will be *very* slow.
+
+3. Download each file/folder listed in the main folder. You should not open the folder, just download it (it will download as a zip)
+
+4. Extract the zip file
+
+5. Move `efi_vars.fd` and `VM_Data.qcow2` into the `Data` folder of the extracted `ARV VM macOS` folder
+
+6. Rename the `ARV VM macOS` and add `.utm` to the end. Accept the warning that pops up.
+
+7. Move the `.utm` file to somewhere safe
+
+8. Double click the `.utm` file
+
+### Setting up VM
+
+1. Click the play button next to the newly imported VM.
+
+2. Once the login screen shows, select "ARV Member"
+
+3. The password of your user is `arvrules`
+
+4. Once logged in, hit the Command key, type in `Terminal`, and hit Enter
+
+5. Run `~/install_script.sh` and follow the prompts.
+    
+    Your `sudo` password is the same as your user password.
 
 And that's it for environment setup! You're ready to start the onboarding project.
 
-## Pizza Delivery Robot
+# Pizza Delivery Robot
 You will be designing a pizza delivery robot control system that handles order processing, navigation, pizza pickup, and delivery. You will need to complete the following actions for each order:  
 
 - Receive and process the order
@@ -41,7 +77,7 @@ In ROS terms:
 - Call the navigate_to_coord service again
 - Call the deliver_pizza service
 
-### Initial Setup
+## Initial Setup
 To begin, open a terminal window from the sidebar on the left, navigate to the workspace src directory, and clone this repo:
 ``` bash
 cd ~/arv-ws/src
@@ -103,7 +139,7 @@ To get Intellisense to work, click on the Build button in the very bottom bar in
 
 Now we're ready to start writing code! 
 
-### Receiving the orders
+## Receiving the orders
 You will be creating a single node in this project, which will be implemented as a single Python class called PizzaBotController. Your package will have 2 python files, each of which are already created and found in the pizza_bot package: `pizza_bot_controller.py`, which will contain the code for the node (and its entrypoint), and `__init__.py`, which we'll leave blank for now. 
 
 Download the ROS2_Tutorial.pdf file found in this repo. It is an excellent introduction to ROS 2 concepts written by Chris Erndteman, our current engineering director and former navigation lead. This document will be referred to as the ROS2 Tutorial from now on. To get a conceptual understanding of ROS nodes, read section 4.1 of the ROS2 Tutorial and the Background section of the following article: [ROS Nodes](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html).
@@ -129,7 +165,7 @@ ros2 launch pizza_bot_infrastructure pizza_bot_infrastructure_launch.py
 
 Remember to always run the pizza_bot_controller node before running the infrastructure to make sure your node doesn't miss any published orders. The infrastructure output won't be changed by your subscriber, so you can check that your subscriber is working by printing out the data in the Order message you receive and check that it matches the orders found in pizza_bot_infrastructure/config/orders.json. 
 
-### Notify customer
+## Notify customer
 The next task is to notify the customer that their order has been received. You will do this by publishing each order you receive to a topic called "received_orders". The message type of this topic is the same as the "orders" topic you subscribed to in the previous step, so you can publish the order exactly how you received it. 
 
 Use the publisher section of the following article as a reference when creating the publisher: [ROS Publishers/Subscribers](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html). 
@@ -138,7 +174,7 @@ If you're publishing the orders correctly, the infrastructure output should look
 
 <img src="https://github.com/umigv/nav-onboarding-2025/blob/main/images/Order%20pub%20output.png" width="800">
 
-### Navigate to the pizza place
+## Navigate to the pizza place
 The next task is to navigate the pizza bot to the correct pizza place. You will do this by calling a service provided by the infrastructure called "navigate_to_coord". To get a conceptual understanding of services, read section 4.3 of the ROS2 Tutorial and the Background section of the following article: [ROS Services](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html).
 
 To look at the request and response types of the "navigate_to_coord" service, run the following command: 
@@ -174,7 +210,7 @@ If you're calling the service correctly, the infrastucture output should look li
 
 As seen in the above screenshot, sometimes the customer_node and navigator_node output their messages in a different order, and that's completely fine; both nodes are completely independent processes running concurrently, so there will be some non-determinism in how they execute. 
 
-### Retrieving the pizza
+## Retrieving the pizza
 The next task is ordering and retrieving the pizza from the restaurant. You will do this by calling an action provided by the infrastructure called "make_pizza". To get a conceptual understanding of actions, read section 4.5 of the ROS2 Tutorial and the Background section of the following article: [ROS Actions](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html).
 
 To look at the data types of the "make_pizza" action, run the following command: 
@@ -207,14 +243,14 @@ If you're calling the action correctly for each order, the infrastructure output
 
 <img src="https://github.com/umigv/nav-onboarding-2025/blob/main/images/Order%20pizza%20output.png" width="800">
 
-### Navigate to the customer's house
+## Navigate to the customer's house
 The next task is to navigate the pizza robot to the customer's house. You will do this with the same service you used to navigate to the pizza place, "navigate_to_coord", which means you can use the same client object you created a couple steps ago. Try to reuse as much code as possible from when you last called the service. Each Order contains a customer_coord that has the coordinates of the customer's house. 
 
 If you're navigating to the customer's house correctly, the infrastructure output should look like this: 
 
 <img src="https://github.com/umigv/nav-onboarding-2025/blob/main/images/Navigate%20to%20customer%20output.png" width="800">
 
-### Deliver the pizza
+## Deliver the pizza
 The final task is to deliver the pizza to the customer. You will do this by calling a different service provided by the infrastructure called "deliver_pizza". To look at the data types of the "deliver_pizza" service, run the following command: 
 
 ```bash
@@ -230,12 +266,12 @@ Use the same code structure as you did when calling the "navigate_to_coord" serv
 And that's it! After completing this onboarding project, you should have a solid understanding of the basic structure of a ROS application and the three primary methods nodes use to communicate with each other. When you're finished, let a lead know and we'll start talking about what project you might want to work on!
 
 
-## Common Errors:
+# Common Errors:
 Q:
 "when I run the code ~/arv-ws/src/nav-onboarding-2025/pizza_bot cmd I get an error
 
 A:
-You need to download vs code for ubuntu IN YOUR VM (so click on the firefox logo in ubuntu and check out this link https://code.visualstudio.com/docs/setup/linux)
+You need to use VS Code IN YOUR VM/DOCKER.
 
 
 Q:
@@ -254,18 +290,11 @@ A:
 - run source install/setup.bash
 - try again
 
-
-Q: 
-"I have a M1 and M2 macbook and I when I run the VM I get a black screen
-
-A:
-On the top bar click "Virtual Machine", then click "Restart" 
-
 Q:
-"My VM doesn't even show me a black screen"
+"My VM/Docker doesn't work"
 
 A:
-Ask Maaz or John about Robostack! 
+Ask Ethan for help
 
 
 
