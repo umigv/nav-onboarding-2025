@@ -269,6 +269,9 @@ If you're calling the service correctly, the infrastucture output should look li
 
 As seen in the above screenshot, sometimes the customer_node and navigator_node output their messages in a different order, and that's completely fine; both nodes are completely independent processes running concurrently, so there will be some non-determinism in how they execute. 
 
+## Stop: Advanced
+This year we decided to split the onboarding into a basic and advanced section because it was too large. If you're enjoying the onboarding and/or want to learn more about ROS, continue, otherwise, skip to [here](https://github.com/umigv/nav-onboarding-2025#done).
+
 ## Retrieving the pizza
 The next task is ordering and retrieving the pizza from the restaurant. You will do this by calling an action provided by the infrastructure called "make_pizza". To get a conceptual understanding of actions, read section 4.5 of the ROS2 Tutorial and the Background section of the following article: [ROS Actions](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html).
 
@@ -321,6 +324,8 @@ Use the same code structure as you did when calling the "navigate_to_coord" serv
 
 
 <img src="https://github.com/umigv/nav-onboarding-2025/blob/main/images/Deliver%20pizza%20output.png" width="800">
+
+## Done!
 
 And that's it! After completing this onboarding project, you should have a solid understanding of the basic structure of a ROS application and the three primary methods nodes use to communicate with each other. When you're finished, let a lead know and we'll start talking about what project you might want to work on!
 
