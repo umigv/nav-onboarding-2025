@@ -20,6 +20,8 @@ ROS is designed for the Ubuntu Operating System, a Linux distribution, so some e
 # Environment Setup
 We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Silicon) uses a VM, and other devices use Docker. Follow the directions for your system.
 
+Before you start, if you don't have a GitHub account, make one.
+
 ## macOS (Apple Silicon) VM Setup
 
 ### Downloading VM
@@ -85,7 +87,14 @@ Talk to Ethan.
 
 ## Done! (Mostly)
 
-Additionally, install the Python extension in your Docker/VM's VS Code to get syntax highlighting/autocomplete.
+You'll need to add a key to your GitHub account in order to push to ARV repositories.
+
+1. Run `cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard`
+2. Visit https://github.com/settings/ssh/new
+3. Choose a Title (e.g. ARV VM)
+4. Paste into the Key box (the pasted content should start with `ssh-` and end with the git email you entered)
+5. Click add SSH Key
+6. Whenever you clone an ARV repository, use the Git option instead of the HTTPS option
 
 And that's it for environment setup! You're ready to start the onboarding project.
 
