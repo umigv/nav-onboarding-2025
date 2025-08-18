@@ -18,7 +18,11 @@ ROS provides both a Python API (rclpy) and a C++ API (rclcpp), but a node's impl
 ROS is designed for the Ubuntu Operating System, a Linux distribution, so some environment setup is required before diving into programming with ROS. 
 
 # Environment Setup
-We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Silicon) uses a VM, and other devices use Docker. Follow the directions for your system.
+We run ROS in a virtualized Linux environment for ease of use. Follow the directions for your system. See below for 
+
+* macOS (Apple Silicon)
+* Windows/Linux
+* macOS (Intel)
 
 Before you start, if you don't have a GitHub account, make one.
 
@@ -64,23 +68,37 @@ Before you start, if you don't have a GitHub account, make one.
     
     Your `sudo` password is the same as your user password.
 
-## Windows Docker Setup
-1. Install Docker Desktop from https://www.docker.com/products/docker-desktop, uncheck "Use Windows containers," and enable WSL2 during setup. 
-2. Make sure Docker desktop is running. Then open PowerShell and run `docker pull ghcr.io/tiryoh/ros2-desktop-vnc:humble` to pull the Docker image.`
-3. Create a workspace folder by running `mkdir C:\Users\YOURWINDOWSUSERNAMEHERE\arv-ws`
-4. Start the container using `docker run -it -p 8080:80 --shm-size=512m --security-opt seccomp=unconfined -v C:\Users\YOURWINDOWSUSERNAMEHERE\arv-ws:/home/ubuntu/arv-ws --name my_ros2_env ghcr.io/tiryoh/ros2-desktop-vnc:humble`
-5. Note: you can change `512m` to `1g` for better Gazebo and Rviz performance
-6. Open http://127.0.0.1:8080 in your browser to access the ROS 2 GUI.
-7. Next time, run `docker start -ai my_ros2_env` to directly start your Docker container.
+## Windows & Linux VM Setup
+### Downloading VM
+1. Install VirtualBox from https://www.virtualbox.org/wiki/Downloads
+2. Download the files one at a time from https://drive.google.com/drive/folders/1d0M5BTjTm2voa5hYHM4x9l4-TKXkraxD?usp=sharing
 
-## Linux Docker Setup
-1. Install Docker from https://docs.docker.com/engine/install/
-2. Restart your computer to ensure Docker is running. Then open a terminal and run `sudo docker pull ghcr.io/tiryoh/ros2-desktop-vnc:humble` to pull the Docker image.`
-3. Create a workspace folder by running `mkdir ~/arv-ws`
-4. Start the container using `docker run -it -p 8080:80 --shm-size=512m --security-opt seccomp=unconfined -v /home/YOURUSERNAMEHERE/arv-ws:/home/ubuntu/arv-ws --name my_ros2_env ghcr.io/tiryoh/ros2-desktop-vnc:humble`
-5. Note: you can change `512m` to `1g` for better Gazebo and Rviz performance
-6. Open http://127.0.0.1:8080 in your browser to access the ROS 2 GUI.
-7. Next time, run `sudo docker start -ai my_ros2_env` to directly start your Docker container.
+     **DO NOT SELECT BOTH FILES AND DOWNLOAD AT ONCE**, that causes the download to be very slow. 
+
+     **Place the .vdi in a place where you won't accidentally delete it**, as it will contain all of your work in ARV
+3. Open VirtualBox
+4. Click Import, click the folder button with the green `^` character, select the .ova file, and click Finish
+5. Click Settings, then Storage, then the button that looks like a hard drive with the `+` character next to `Controller: SATA` (not the one that looks like a CD)
+6. Click Add, select the .vdi file, then click Choose
+7. Click OK
+
+### Setting up VM
+1. Click the Start button
+
+2. Once the login screen shows, select "arvuser"
+
+3. The password of your user is `arvrules`
+
+4. Once logged in, hit the Windows/Super key, type in `Terminal`, and hit Enter
+
+5. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
+
+     Hint: you can paste into Terminal with CTRL+SHIFT+V
+
+5. Run `~/install_script.sh` and follow the prompts.
+    
+    Your `sudo` password is the same as your user password.
+
 
 ## Intel macOS Docker Setup
 Talk to Ethan.
