@@ -38,7 +38,7 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 
 6. Rename the `ARV VM macOS` and add `.utm` to the end. Accept the warning that pops up.
 
-7. Move the `.utm` file to somewhere safe
+7. Move the `.utm` file to a place where you won't accidentally delete it, as it will contain all of your work in ARV
 
 8. Double click the `.utm` file
 
