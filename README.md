@@ -100,7 +100,7 @@ Before you start, if you don't have a GitHub account, make one.
     Your `sudo` password is the same as your user password.
 
 
-## Intel macOS Docker Setup
+## Intel macOS VM Setup
 Talk to Ethan.
 
 ## Done! (Mostly)
