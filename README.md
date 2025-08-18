@@ -54,6 +54,10 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 
 5. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
 
+     Hint: you can paste into Terminal with CTRL+SHIFT+V 
+     
+     In general, any time you're in the VM, you use CTRL where you would use Command in macOS
+
 5. Run `~/install_script.sh` and follow the prompts.
     
     Your `sudo` password is the same as your user password.
