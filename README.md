@@ -26,8 +26,7 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 
 1. Download UTM @ https://mac.getutm.app/
 
-### TODO: upload image without script, use command to download script. also figure out persisting our requirements in linux and windows docker
-2. Visit https://drive.google.com/drive/u/1/folders/1CuCsx1mUXYT3qFiAWCIg0p1zBhwae-vI
+2. Visit https://drive.google.com/drive/folders/1Iz2qyxw4j9VA_7RzLv9DVANSboL2l-BI?usp=sharing
 
 **Important**: Do **not** select everything and click download. The files/folders must be downloaded individually, otherwise it will be *very* slow.
 
@@ -52,6 +51,8 @@ We run ROS in a virtualized Linux environment for ease of use. macOS (Apple Sili
 3. The password of your user is `arvrules`
 
 4. Once logged in, hit the Command key, type in `Terminal`, and hit Enter
+
+5. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
 
 5. Run `~/install_script.sh` and follow the prompts.
     
