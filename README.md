@@ -36,17 +36,19 @@ Before you start, if you don't have a GitHub account, make one.
 
 **Important**: Do **not** select everything and click download. The files/folders must be downloaded individually, otherwise it will be *very* slow.
 
-3. Download each file/folder listed in the main folder. You should not open the folder, just download it (it will download as a zip)
+3. Download each file/folder listed in the main folder. Again, do **not** download the folder in one click, download the files within it individually.
 
-4. Extract the zip file
+4. Create a folder named `ARV VM macOS`
 
-5. Move `efi_vars.fd` and `VM_Data.qcow2` into the `Data` folder of the extracted `ARV VM macOS` folder
+5. Within that folder, create a folder named `Data`
 
-6. Rename the `ARV VM macOS` and add `.utm` to the end. Accept the warning that pops up.
+6. Move `efi_vars.fd` and `VM_Data.qcow2` into the `Data` folder, and `config.plist` and `screenshot.png` into the `ARV VM macOS` folder
 
-7. Move the `.utm` file to a place where you won't accidentally delete it, as it will contain all of your work in ARV
+7. Rename the `ARV VM macOS` and add `.utm` to the end. Accept the warning that pops up.
 
-8. Double click the `.utm` file
+8. Move the `.utm` file to a place where you won't accidentally delete it, as it will contain all of your work in ARV
+
+9. Double click the `.utm` file
 
 ### Setting up VM
 
@@ -359,6 +361,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
