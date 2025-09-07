@@ -66,7 +66,7 @@ Before you start, if you don't have a GitHub account, make one.
      
      In general, any time you're in the VM, you use CTRL where you would use Command in macOS
 
-5. Run `~/install_script.sh` and follow the prompts.
+5. Run `~/install_script.sh` and follow the prompts. If you are prompted to restart services, just hit Enter.
     
     Your `sudo` password is the same as your user password.
 
@@ -361,6 +361,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
