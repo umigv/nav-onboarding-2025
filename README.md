@@ -114,7 +114,7 @@ You'll need to add a key to your GitHub account in order to push to ARV reposito
 3. Choose a Title (e.g. ARV VM)
 4. Paste into the Key box (the pasted content should start with `ssh-` and end with the git email you entered)
 5. Click add SSH Key
-6. Whenever you clone an ARV repository, use the Git option instead of the HTTPS option
+6. Whenever you clone an ARV repository, use the SSH option instead of the HTTPS option
 
 And that's it for environment setup! You're ready to start the onboarding project.
 
@@ -361,6 +361,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
