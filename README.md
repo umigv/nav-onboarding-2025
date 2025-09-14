@@ -196,8 +196,6 @@ Run the following command to open the pizza_bot package in VSCode:
 code ~/arv-ws/src/nav-onboarding-2025/pizza_bot
 ```
 
-To get Intellisense to work, click on the Build button in the very bottom bar in VSCode and select a compiler from the drop-down menu. Output from CMake should appear in the OUTPUT window. It's ok if errors occured; it probably won't be able to find the pizza_bot_interfaces package, but Intellisense should still work. 
-
 Now we're ready to start writing code! 
 
 ## Receiving the orders
@@ -361,6 +359,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
