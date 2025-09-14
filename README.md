@@ -109,10 +109,10 @@ Talk to Ethan.
 
 You'll need to add a key to your GitHub account in order to push to ARV repositories.
 
-1. Run `cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard`
+1. Run `cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard`, this will copy your SSH key to your clipboard.
 2. Visit https://github.com/settings/ssh/new
 3. Choose a Title (e.g. ARV VM)
-4. Paste into the Key box (the pasted content should start with `ssh-` and end with the git email you entered)
+4. Paste your SSH key into the Key box (the pasted content should start with `ssh-` and end with the git email you entered)
 5. Click add SSH Key
 6. Whenever you clone an ARV repository, use the SSH option instead of the HTTPS option
 
@@ -359,6 +359,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
