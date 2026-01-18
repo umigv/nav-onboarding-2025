@@ -87,17 +87,19 @@ Before you start, if you don't have a GitHub account, make one.
 ### Setting up VM
 1. Click the Start button
 
-2. Once the login screen shows, select "arvuser"
+2. Click "View" near the top left, then select "Scaled Mode"
 
-3. The password of your user is `arvrules`
+3. Once the login screen shows, select "arvuser"
 
-4. Once logged in, hit the Windows/Super key, type in `Terminal`, and hit Enter
+4. The password of your user is `arvrules`
 
-5. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
+5. Once logged in, hit the Windows/Super key, type in `Terminal`, and hit Enter
+
+6. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
 
      Hint: you can paste into Terminal with CTRL+SHIFT+V
 
-5. Run `~/install_script.sh` and follow the prompts. If you are prompted to restart services, just hit Enter. If you are prompted by something other than the Terminal, you can ignore that prompt.
+7. Run `~/install_script.sh` and follow the prompts. If you are prompted to restart services, just hit Enter. If you are prompted by something other than the Terminal, you can ignore that prompt.
     
     Your `sudo` password is the same as your user password.
 
@@ -359,6 +361,7 @@ Q:
 
 A:
 Ask Ethan for help
+
 
 
 
