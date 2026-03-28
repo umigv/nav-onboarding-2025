@@ -128,7 +128,7 @@ Open a new terminal window, ideally so you can see both at once, and launch the 
 ros2 launch pizza_bot_infrastructure pizza_bot_infrastructure_launch.py
 ```
 
-Remember to always run the pizza_bot_controller node before running the infrastructure to make sure your node doesn't miss any published orders. The infrastructure output won't be changed by your subscriber, so you can check that your subscriber is working by printing out the data in the Order message you receive and check that it matches the orders found in pizza_bot_infrastructure/config/orders.json. 
+Remember to always run the pizza_bot_controller node before running the infrastructure to make sure your node doesn't miss any published orders. The infrastructure output won't be changed by your subscriber, so you can check that your subscriber is working by printing out the data in the Order message you receive and check that it matches the orders found in src/pizza_bot_infrastructure/config/orders.json. 
 
 ## Notify customer
 The next task is to notify the customer that their order has been received. You will do this by publishing each order you receive to a topic called "received_orders". The message type of this topic is the same as the "orders" topic you subscribed to in the previous step, so you can publish the order exactly how you received it. 
@@ -243,22 +243,6 @@ Q:
 A:
 You need to use VS Code IN YOUR VM/DOCKER.
 
-
-Q:
-"Im running ros2 launch pizza_bot_infrastructure pizza_bot_infrastructure_launch.py and I get an error like "ros2 launch pizza_bot_infrastructure pizza_bot_infrastructure_launch.py"
-
-A:
-- If you haven't written any code, then just git pull and you should be good!
-- If you do have code written and don't want to lose it just do: 
-- In vs code go to : nav-onboarding-2025/pizza_bot_infrastructure/config/
-- rigtht click on the "orders.json" and click "copy path" (not copy relative path)
-- then open the file order_publisher_params.yaml
-     - which is also in nav-onboarding-2025/pizza_bot_infrastructure/config/
-- replace the parameter orders_path with what you just copied (keep the quotes though)
-- ctrl-s to save the file in vscode
-- in your workspace directory run colcon cuild
-- run source install/setup.bash
-- try again
 
 Q:
 "My VM/Docker doesn't work"
