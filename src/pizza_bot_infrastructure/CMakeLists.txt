@@ -8,7 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(nlohmann_json 3.10.5 REQUIRED)
+add_subdirectory(external/json-3.11.3)
 find_package(pizza_bot_interfaces REQUIRED)
 find_package(rclcpp_action REQUIRED)
 

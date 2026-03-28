@@ -18,107 +18,12 @@ ROS provides both a Python API (rclpy) and a C++ API (rclcpp), but a node's impl
 ROS is designed for the Ubuntu Operating System, a Linux distribution, so some environment setup is required before diving into programming with ROS. 
 
 # Environment Setup
-We run ROS in a virtualized Linux environment for ease of use. Follow the directions for your system. See below for 
 
-* macOS (Apple Silicon)
-* Windows/Linux
-* macOS (Intel)
+Follow the setup instructions at [umigv/nav-environment](https://github.com/umigv/nav-environment).  
 
-Before you start, if you don't have a GitHub account, make one.
+Whenever you clone an ARV repository, use the SSH option instead of the HTTPS option.  
 
-## macOS (Apple Silicon) VM Setup
-
-### Downloading VM
-
-1. Download UTM @ https://mac.getutm.app/
-
-2. Visit https://drive.google.com/drive/folders/1Iz2qyxw4j9VA_7RzLv9DVANSboL2l-BI?usp=sharing
-
-**Important**: Do **not** select everything and click download. The files/folders must be downloaded individually, otherwise it will be *very* slow.
-
-3. Download each file/folder listed in the main folder. Again, do **not** download the folder in one click, download the files within it individually.
-
-4. Create a folder named `ARV VM macOS`
-
-5. Within that folder, create a folder named `Data`
-
-6. Move `efi_vars.fd` and `VM_Data.qcow2` into the `Data` folder, and `config.plist` and `screenshot.png` into the `ARV VM macOS` folder
-
-7. Rename the `ARV VM macOS` and add `.utm` to the end. Accept the warning that pops up.
-
-8. Move the `.utm` file to a place where you won't accidentally delete it, as it will contain all of your work in ARV
-
-9. Double click the `.utm` file
-
-### Setting up VM
-
-1. Click the play button next to the newly imported VM.
-
-2. Once the login screen shows, select "ARV Member"
-
-3. The password of your user is `arvrules`
-
-4. Once logged in, hit the Command key, type in `Terminal`, and hit Enter
-
-5. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
-
-     Hint: you can paste into Terminal with CTRL+SHIFT+V 
-     
-     In general, any time you're in the VM, you use CTRL where you would use Command in macOS
-
-5. Run `~/install_script.sh` and follow the prompts. If you are prompted to restart services, just hit Enter. If you are prompted by something other than the Terminal, you can ignore that prompt.
-    
-    Your `sudo` password is the same as your user password.
-
-## Windows & Linux VM Setup
-### Downloading VM
-1. Install VirtualBox from https://www.virtualbox.org/wiki/Downloads
-2. Download the files one at a time from https://drive.google.com/drive/folders/1d0M5BTjTm2voa5hYHM4x9l4-TKXkraxD?usp=sharing
-
-     **DO NOT SELECT BOTH FILES AND DOWNLOAD AT ONCE**, that causes the download to be very slow. 
-
-     **Place the .vdi in a place where you won't accidentally delete it**, as it will contain all of your work in ARV
-3. Open VirtualBox
-4. Click Import, click the folder button with the green `^` character, select the .ova file, and click Finish
-5. Click Settings, then Storage, then the button that looks like a hard drive with the `+` character next to `Controller: SATA` (not the one that looks like a CD)
-6. Click Add, select the .vdi file, then click Choose
-7. Click OK
-
-### Setting up VM
-1. Click the Start button
-
-2. Click "View" near the top left, then select "Scaled Mode"
-
-3. Once the login screen shows, select "arvuser"
-
-4. The password of your user is `arvrules`
-
-5. Once logged in, hit the Windows/Super key, type in `Terminal`, and hit Enter
-
-6. Run `wget -O ~/install_script.sh https://raw.githubusercontent.com/umigv/nav-environment/refs/heads/main/install_script.sh`
-
-     Hint: you can paste into Terminal with CTRL+SHIFT+V
-
-7. Run `~/install_script.sh` and follow the prompts. If you are prompted to restart services, just hit Enter. If you are prompted by something other than the Terminal, you can ignore that prompt.
-    
-    Your `sudo` password is the same as your user password.
-
-
-## Intel macOS VM Setup
-Talk to Ethan.
-
-## Done! (Mostly)
-
-You'll need to add a key to your GitHub account in order to push to ARV repositories.
-
-1. Run `cat ~/.ssh/id_ed25519.pub | xclip -selection clipboard`, this will copy your SSH key to your clipboard.
-2. Visit https://github.com/settings/ssh/new
-3. Choose a Title (e.g. ARV VM)
-4. Paste your SSH key into the Key box (the pasted content should start with `ssh-` and end with the git email you entered)
-5. Click add SSH Key
-6. Whenever you clone an ARV repository, use the SSH option instead of the HTTPS option
-
-And that's it for environment setup! You're ready to start the onboarding project.
+You're now ready to start the onboarding project.  
 
 # Pizza Delivery Robot
 You will be designing a pizza delivery robot control system that handles order processing, navigation, pizza pickup, and delivery. You will need to complete the following actions for each order:  
@@ -140,29 +45,28 @@ In ROS terms:
 - Call the deliver_pizza service
 
 ## Initial Setup
-To begin, open a terminal window from the sidebar on the left, make a workspace directory, enter it, and clone this repo:
+To begin, open a terminal window from the sidebar on the left and clone this repo into your home directory:
 ``` bash
-mkdir -p ~/arv-ws/src
-cd ~/arv-ws/src
-git clone https://github.com/umigv/nav-onboarding-2025
+cd ~
+git clone git@github.com:umigv/nav-onboarding-2025.git
 ```
 
-If you look in your src directory, you will see three packages: pizza_bot, pizza_bot_infrastructure, and pizza_bot_interfaces. All of the code you will be writing will go in the pizza_bot package. Do not edit any files in the pizza_bot_infrastructure or pizza_bot_interfaces packages, but feel free to look inside them if you're curious. 
+If you look in the `src` directory, you will see three packages: `pizza_bot`, `pizza_bot_infrastructure`, and `pizza_bot_interfaces`. All of the code you will be writing will go in the `pizza_bot` package. Do not edit any files in the `pizza_bot_infrastructure` or `pizza_bot_interfaces` packages, but feel free to look inside them if you're curious.
 
-Now, open another terminal tab, navigate back to the workspace directory, and build the code you just cloned:
+Now, open another terminal tab, navigate to the workspace directory, and build the code you just cloned:
 ``` bash
-cd ~/arv-ws
+cd ~/nav-onboarding-2025
 colcon build
 ```
 
-Colcon is the ROS build tool used to compile all of the packages in the src directory. 
+Colcon is the ROS build tool used to compile all of the packages in the `src` directory.
 
-Now we need to make sure that the infrastructure is working properly. Open another terminal tab and a separate terminal window so two terminal windows are visible at once (get used to opening lots and lots of terminal windows/tabs). Make sure you're in the workspace directory (~/arv-ws) in each new terminal. 
+Now we need to make sure that the infrastructure is working properly. Open another terminal tab and a separate terminal window so two terminal windows are visible at once (get used to opening lots and lots of terminal windows/tabs). Make sure you're in the workspace directory (`~/nav-onboarding-2025`) in each new terminal.
 
 **_Important: After opening a new terminal or after running `colcon build`, you need to run the following command to sync your workspace with the underlying ROS installation:_**
 ```bash
-source ~/arv-ws/install/setup.bash
-# If you're already in the arv-ws directory, you can simply run:
+source ~/nav-onboarding-2025/install/setup.bash
+# If you're already in the nav-onboarding-2025 directory, you can simply run:
 source install/setup.bash
 # If you are in a zsh terminal, replace setup.bash with setup.zsh
 ```
@@ -195,7 +99,7 @@ Once you confirm that the infrastructure is functioning as expected, kill the pr
 
 Run the following command to open the pizza_bot package in VSCode:
 ```bash
-code ~/arv-ws/src/nav-onboarding-2025/pizza_bot
+code ~/nav-onboarding-2025/src/pizza_bot
 ```
 
 Now we're ready to start writing code! 
@@ -214,7 +118,7 @@ ros2 interface show pizza_bot_interfaces/msg/Order
 
 Use the subscriber section of the following article as a reference when creating the subscriber: [ROS Publishers/Subscribers](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Writing-A-Simple-Py-Publisher-And-Subscriber.html).
 
-Looking things up, researching, and reading documentation are perhaps the most useful skills you will need in ARV. Chat GPT can be a valuable resource as well. When you're ready to test your code, run `colcon build` (make sure to only do this in the arv-ws directory) to build your node. Make sure to run `source ~/arv-ws/install/setup.bash` in each new terminal you open and after building, or your changes won't have any effect. Run the PizzaBotController node with the following command: 
+Looking things up, researching, and reading documentation are perhaps the most useful skills you will need in ARV. Chat GPT can be a valuable resource as well. When you're ready to test your code, run `colcon build` (make sure to only do this in the `~/nav-onboarding-2025` directory) to build your node. Make sure to run `source ~/nav-onboarding-2025/install/setup.bash` in each new terminal you open and after building, or your changes won't have any effect. Run the PizzaBotController node with the following command:
 ```bash
 ros2 run pizza_bot pizza_bot_controller_node 
 ```
@@ -334,7 +238,7 @@ And that's it! After completing this onboarding project, you should have a solid
 
 # Common Errors:
 Q:
-"when I run the code ~/arv-ws/src/nav-onboarding-2025/pizza_bot cmd I get an error
+"when I run the code ~/nav-onboarding-2025/src/pizza_bot cmd I get an error
 
 A:
 You need to use VS Code IN YOUR VM/DOCKER.
